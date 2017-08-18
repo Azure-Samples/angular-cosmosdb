@@ -1,3 +1,9 @@
+---
+services: cosmos-db
+platforms: nodejs
+author: jopapa
+---
+
 # Angular Cosmos DB
 
 by [John Papa](http://twitter.com/john_papa)
