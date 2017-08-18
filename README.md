@@ -1,57 +1,71 @@
-# Project Name
+# Angular Cosmos DB
 
-(short, 1-3 sentenced, description of the project)
+by [John Papa](http://twitter.com/john_papa)
 
-## Features
+You can [watch me build the app as part of my series here](https://johnpapa.net/angular-cosmosdb-1/)
 
-This project framework provides the following features:
+You can [view all videos together here](/VIDEOS.md)
 
-* Feature 1
-* Feature 2
-* ...
+[Learn more about developing Node.js apps with Azure's cloud services here](https://docs.microsoft.com/en-us/nodejs/azure)
+
+## Requirements
+
+1. Install the Angular CLI
+
+    ```bash
+    npm install -g @angular/cli
+    ```
+
+1. Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 
 ## Getting Started
 
-### Prerequisites
+1. Clone this repository
 
-(ideally very short, if any)
+    ```bash
+    git clone https://github.com/johnpapa/angular-cosmosdb.git
+    cd angular-cosmosdb
+    ```
 
-- OS
-- Library version
-- ...
+1. Install the npm packages
 
-### Installation
+    ```bash
+    npm i
+    ```
 
-(ideally very short)
+1. Configure Cosmos DB server settings
 
-- npm install [package name]
-- mvn install
-- ...
+    Rename the `example-environment.js` file to `environment.js` in the `server/env/` folder and update it with your Cosmos DB settings. Replace the database name key, and port with your specific configuration.
 
-### Quickstart
-(Add steps to get up and running quickly)
+    ```javascript
+    // server/env/environment.js
+    const cosmosPort = 1234; // replace with your port
+    const dbName = 'your-cosmos-db-name-goes-here';
+    const key = 'your-key-goes-here';
 
-1. git clone [repository clone url]
-2. cd [respository name]
-3. ...
+    module.exports = {
+      cosmosPort,
+      dbName,
+      key
+    };
+    ```
 
+## Running the app
 
-## Demo
+1. Build the Angular app
 
-A demo app is included to show how to use the project.
+    ```bash
+    ng build
+    ```
 
-To run the demo, follow these steps:
+1. Launch the server
 
-(Add steps to start up the demo)
+    ```bash
+    node src/server/index.js
+    ```
 
-1.
-2.
-3.
+1. Open the browser to http://localhost:3000
 
-## Resources
+## Problems or Suggestions
 
-(Any additional resources or related projects)
-
-- Link to supporting information
-- Link to similar sample
-- ...
+[Open an issue here](https://github.com/johnpapa/angular-cosmos/issues)
