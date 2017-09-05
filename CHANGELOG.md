@@ -1,4 +1,4 @@
-## [project-title] Changelog
+## angular-cosmosdb Changelog
 
 <a name="x.y.z"></a>
 # x.y.z (yyyy-mm-dd)
