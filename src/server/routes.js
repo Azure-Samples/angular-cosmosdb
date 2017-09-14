@@ -67,4 +67,5 @@ function isLoggedIn(req, res, next) {
   // res.redirect('/api/login');
   res.send(401, { message: 'unauthorized. please log in and try again' });
 }
+
 module.exports = router;
