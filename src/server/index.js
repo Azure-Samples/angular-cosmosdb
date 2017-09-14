@@ -35,6 +35,7 @@ passport.use(
       callbackURL: 'http://localhost:3000/api/auth/twitter/callback'
     },
     (token, tokenSecret, profile, done) => {
+      // find the user in this app's database using the twitter account
       console.log(profile);
       return done(null, profile);
     }
