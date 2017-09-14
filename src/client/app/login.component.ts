@@ -9,8 +9,7 @@ import { HeroService } from './hero.service';
       <button (click)="login()" [hidden]="isLoggedIn">Login</button>
       <button (click)="logout()" [hidden]="!isLoggedIn">Logout</button>
     </div>
-  `,
-  styles: []
+  `
 })
 export class LoginComponent implements OnInit {
   isLoggedIn = false;
@@ -28,7 +27,6 @@ export class LoginComponent implements OnInit {
   }
 
   logout() {
-    // window.location.href = 'http://localhost:3000/api/logout';
     this.heroService.logout().subscribe(result => {
       console.log(result);
       this.isLoggedIn = false;
