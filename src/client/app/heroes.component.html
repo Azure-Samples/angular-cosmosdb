@@ -1,6 +1,4 @@
 <div>
-  <button (click)="login()">Login</button>
-  <button (click)="logout()">Logout</button>
   <ul class="heroes">
     <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
       <button class="delete-button" (click)="deleteHero(hero)">Delete</button>

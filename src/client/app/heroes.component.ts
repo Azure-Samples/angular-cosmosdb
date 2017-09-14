@@ -18,15 +18,6 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
-  login() {
-    window.location.href = 'http://localhost:3000/api/login';
-    // this.heroService.login().subscribe(result => console.log(result));
-  }
-
-  logout() {
-    window.location.href = 'http://localhost:3000/api/logout';
-  }
-
   cancel() {
     this.addingHero = false;
     this.selectedHero = null;

@@ -9,8 +9,12 @@ const api = '/api';
 export class HeroService {
   constructor(private http: HttpClient) {}
 
-  login() {
-    return this.http.get(`${api}/login`);
+  logout() {
+    return this.http.get(`${api}/logout`);
+  }
+
+  getProfile() {
+    return this.http.get<any>(`${api}/profile`);
   }
 
   getHeroes() {
