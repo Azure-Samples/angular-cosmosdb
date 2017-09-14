@@ -32,12 +32,7 @@ router.get('/login', passport.authenticate('twitter'));
 
 router.get(
   '/auth/twitter/callback',
-  passport.authenticate('twitter', { failureRedirect: '/login' }),
-  (req, res) => {
-    // Successful authentication, redirect home.
-    console.log('logged in!', req.user);
-    res.redirect('/');
-  }
+  passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/login' })
 );
 
 router.get('/logout', (req, res) => {
