@@ -18,10 +18,16 @@ export class AuthInterceptor implements HttpInterceptor {
       if (response instanceof HttpErrorResponse) {
         console.log('Processing http error', response);
         if (response.status === 401) {
+          // -------------------------
           // unauthorized
-          // so we can redirect, if we had a login page :)
+          // We have options:
+          // 1. We can redirect, if we had a login page :)
+          // or
+          // 2. force a redirect and reload
           // window.location.href = 'http://localhost:3000/api/login';
-          // or we can just be mean to the user and tell them to press the login button
+          // or
+          // 3. tell the user with a toast
+          // -------------------------
           alert('press the freaking login button!');
         }
       }
