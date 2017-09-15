@@ -1,9 +1,13 @@
 const cosmosPort = 1234; // replace with your port
-const dbName = 'your-cosmos-db-name-goes-here';
-const key = 'your-key-goes-here';
+const comsosDbName = 'your-cosmosdb-name-goes-here';
+const cosmosDbKey = 'your-cosmosdb-key-goes-here';
+const twitterClientId = 'your-twitter-client-id-goes-here';
+const twitterClientSecret = 'your-twitter-client-secret-goes-here';
 
 module.exports = {
-  dbName,
-  key,
-  cosmosPort
+  comsosDbName,
+  cosmosDbKey,
+  cosmosPort,
+  twitterClientId,
+  twitterClientSecret
 };
