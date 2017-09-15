@@ -47,7 +47,7 @@ router.get(
 
 router.get('/logout', (req, res) => {
   req.logout();
-  res.send(200, {message: 'Hey, you should really reconsider and log back in. It\'s fun in here'})
+  res.status(200).send({message: 'Hey, you should really reconsider and log back in. It\'s fun in here'});
   // res.redirect('/');
 });
 
@@ -56,7 +56,7 @@ router.get('/profile', (req, res) => {
   if (req.isAuthenticated()) {
     body = req.user;
   }
-  res.send(200, body);
+  res.status(200).send(body);
 });
 
 function isLoggedIn(req, res, next) {
@@ -65,7 +65,7 @@ function isLoggedIn(req, res, next) {
 
   // if they aren't redirect them to the login page
   // res.redirect('/api/login');
-  res.send(401, { message: 'unauthorized. please log in and try again' });
+  res.status(401).send({ message: 'unauthorized. please log in and try again' });
 }
 
 module.exports = router;
