@@ -42,5 +42,5 @@ passport.use(
 );
 
 
-const port = process.env.PORT || '3000';
+const port = env.serverPort || process.env.PORT;
 app.listen(port, () => console.log(`API running on localhost:${port}`));
