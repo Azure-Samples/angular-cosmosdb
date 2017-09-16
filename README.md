@@ -70,7 +70,22 @@ You can [view all videos together here](/VIDEOS.md)
     node src/server/index.js
     ```
 
-1. Open the browser to http://localhost:3000
+1. Open the browser to http://localhost:3001
+
+## Docker
+
+Create the Docker image and run it locally
+
+```bash
+# build the image
+dockerImage=angular-cosmosdb
+port=3001
+docker build -t $dockerImage .
+
+# create and run the container
+TWITTER_CALLBACK_URL=http://localhost:$port/api/auth/twitter/callback docker run  -d -p $port:3001 -p 5858:5858 $dockerImage
+open http://localhost:$port
+```
 
 ## Problems or Suggestions
 

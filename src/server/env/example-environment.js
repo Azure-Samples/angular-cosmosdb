@@ -1,17 +1,20 @@
-const serverPort = 9000; // this node.js server port
-const cosmosDbPort = 1234; // replace with your port
-const comsosDbName = 'your-cosmosdb-name-goes-here';
-const cosmosDbKey = 'your-cosmosdb-key-goes-here';
-const twitterClientKey = 'your-twitter-client-key-goes-here';
-const twitterClientSecret = 'your-twitter-client-secret-goes-here';
-const twitterCallbackURL = 'your-twitter-callback-url';
+// Replace with your default values
+const serverPort = process.env.SERVER_PORT || 3001;
+
+const cosmos = {
+  comsosDbName: process.env.COSMOSDB_NAME || 'your-cosmosdb-name-goes-here', //
+  cosmosDbKey: process.env.COSMOSDB_KEY || 'your-cosmosdb-key-goes-here',
+  cosmosDbPort: process.env.COSMOSDB_PORT || 10255 // replace with your port
+};
+
+const twitter = {
+  consumerKey: process.env.TWITTER_CLIENT_KEY || 'your-twitter-client-key-goes-here',
+  consumerSecret: process.env.TWITTER_CLIENT_SECRET || 'your-twitter-client-secret-goes-here',
+  callbackURL: process.env.TWITTER_CALLBACK_URL || 'your-twitter-callback-url'
+};
 
 module.exports = {
   serverPort,
-  comsosDbName,
-  cosmosDbKey,
-  cosmosDbPort,
-  twitterClientKey,
-  twitterClientSecret,
-  twitterCallbackURL
+  cosmos,
+  twitter
 };

@@ -28,7 +28,7 @@ export class AuthInterceptor implements HttpInterceptor {
           // or
           // 3. tell the user with a toast
           // -------------------------
-          alert('press the freaking login button!');
+          alert('press the login button!');
         }
       }
 

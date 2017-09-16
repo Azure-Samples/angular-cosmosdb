@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    window.location.href = 'http://localhost:3000/api/login';
+    window.location.href = `${window.location.protocol}//${window.location.host}/api/login`;
   }
 
   logout() {

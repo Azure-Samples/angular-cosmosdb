@@ -47,7 +47,9 @@ router.get(
 
 router.get('/logout', (req, res) => {
   req.logout();
-  res.status(200).send({message: 'Hey, you should really reconsider and log back in. It\'s fun in here'});
+  res
+    .status(200)
+    .send({ message: `Hey, you should really reconsider and log back in. It's fun in here` });
   // res.redirect('/');
 });
 
@@ -61,7 +63,9 @@ router.get('/profile', (req, res) => {
 
 function isLoggedIn(req, res, next) {
   // if user is authenticated in the session, carry on
-  if (req.isAuthenticated()) return next();
+  if (req.isAuthenticated()) {
+    return next();
+  }
 
   // if they aren't redirect them to the login page
   // res.redirect('/api/login');
