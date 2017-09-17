@@ -4,8 +4,10 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/throw';
 
+import { ToastService } from './toast.service';
+
 export class AuthInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private toastService: ToastService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const started = Date.now();
@@ -28,7 +30,8 @@ export class AuthInterceptor implements HttpInterceptor {
           // or
           // 3. tell the user with a toast
           // -------------------------
-          alert('press the freaking login button!');
+          this.toastService.activate('press the login button');
+          // alert('press the login button!');
         }
       }
 

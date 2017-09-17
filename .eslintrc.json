@@ -22,7 +22,7 @@
         "allowNamedFunctions": true
       }
     ],
-    "quotes": ["error", "single"],
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
     "no-var": "warn",
     "prefer-const": "warn",
     "no-const-assign": "warn",
