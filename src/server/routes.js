@@ -54,7 +54,7 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/profile', (req, res) => {
-  let body;
+  let body = {};
   if (req.isAuthenticated()) {
     body = req.user;
   }

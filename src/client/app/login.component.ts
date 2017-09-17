@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.heroService.getProfile().subscribe(result => {
-      this.isLoggedIn = !!result;
+      this.isLoggedIn = !!result.username;
     })
   }
 
