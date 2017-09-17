@@ -8,17 +8,20 @@ import { HeroService } from './hero.service';
     <div>
       <button (click)="login()" [hidden]="isLoggedIn">Login</button>
       <button (click)="logout()" [hidden]="!isLoggedIn">Logout</button>
+      <p [hidden]="!username">Logged in as {{username}}</p>
     </div>
   `
 })
 export class LoginComponent implements OnInit {
   isLoggedIn = false;
+  username: string;
 
   constructor(private heroService: HeroService) { }
 
   ngOnInit() {
     this.heroService.getProfile().subscribe(result => {
-      this.isLoggedIn = !!result.username;
+      this.username = result.username;
+      this.isLoggedIn = !!this.username;
     })
   }
 
@@ -29,6 +32,7 @@ export class LoginComponent implements OnInit {
   logout() {
     this.heroService.logout().subscribe(result => {
       console.log(result);
+      this.username = '';
       this.isLoggedIn = false;
     });
   }

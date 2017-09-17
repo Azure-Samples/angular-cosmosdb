@@ -8,16 +8,20 @@ import { HeroService } from './hero.service';
 import { HeroesComponent } from './heroes.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { LoginComponent } from './login.component';
+import { ToastComponent } from './toast.component';
+import { ToastService } from './toast.service';
 
 @NgModule({
-  declarations: [AppComponent, HeroesComponent, LoginComponent],
+  declarations: [AppComponent, HeroesComponent, LoginComponent, ToastComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [
     HeroService,
+    ToastService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
+      multi: true,
+      deps: [ToastService]
     }
   ],
   bootstrap: [AppComponent]
