@@ -47,5 +47,7 @@ passport.use(
   )
 );
 
+console.log(env);
+
 const port = env.serverPort;
 app.listen(port, () => console.log(`API running on localhost:${port}`));
