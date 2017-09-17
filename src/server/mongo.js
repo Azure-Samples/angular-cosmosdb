@@ -6,13 +6,18 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const env = require('./env/environment');
+const dbSettings = {
+  comsosDbName: env.cosmos.comsosDbName,
+  cosmosDbKey: env.cosmos.cosmosDbKey,
+  cosmosDbPort: env.cosmos.cosmosDbPort
+};
 
 // eslint-disable-next-line max-len
-const mongoUri = `mongodb://${env.dbName}:${env.key}@${env.dbName}.documents.azure.com:${env.cosmosPort}/?ssl=true`; //&replicaSet=globaldb`;
+const mongoUri = `mongodb://${dbSettings.comsosDbName}:${dbSettings.cosmosDbKey}@${dbSettings.comsosDbName}.documents.azure.com:${dbSettings.cosmosDbPort}/?ssl=true`; //&replicaSet=globaldb`;
 
 function connect() {
- mongoose.set('debug', true);
- return mongoose.connect(mongoUri, { useMongoClient: true });
+  mongoose.set('debug', true);
+  return mongoose.connect(mongoUri, { useMongoClient: true });
 }
 
 module.exports = {

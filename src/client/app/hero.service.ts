@@ -9,8 +9,16 @@ const api = '/api';
 export class HeroService {
   constructor(private http: HttpClient) {}
 
+  logout() {
+    return this.http.get(`${api}/logout`);
+  }
+
+  getProfile() {
+    return this.http.get<any>(`${api}/profile`);
+  }
+
   getHeroes() {
-    return this.http.get<Array<Hero>>(`${api}/heroes`)
+    return this.http.get<Array<Hero>>(`${api}/heroes`);
   }
 
   deleteHero(hero: Hero) {
