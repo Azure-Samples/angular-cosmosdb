@@ -7,9 +7,9 @@ mongoose.Promise = global.Promise;
 
 const env = require('./env/environment');
 const dbSettings = {
-  comsosDbName: env.comsosDbName || process.env.COSMOSDB_NAME,
-  cosmosDbKey: env.cosmosDbKey || process.env.COSMOSDB_KEY,
-  cosmosDbPort: env.cosmosDbPort || process.env.COSMOSDB_PORT
+  comsosDbName: env.cosmos.comsosDbName,
+  cosmosDbKey: env.cosmos.cosmosDbKey,
+  cosmosDbPort: env.cosmos.cosmosDbPort
 };
 
 // eslint-disable-next-line max-len

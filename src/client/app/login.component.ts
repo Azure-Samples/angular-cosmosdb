@@ -18,12 +18,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.heroService.getProfile().subscribe(result => {
-      this.isLoggedIn = !!result;
+      this.isLoggedIn = !!result.username;
     })
   }
 
   login() {
-    window.location.href = 'http://localhost:3000/api/login';
+    window.location.href = `${window.location.protocol}//${window.location.host}/api/login`;
   }
 
   logout() {
