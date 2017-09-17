@@ -67,7 +67,7 @@ You can [view all videos together here](/VIDEOS.md)
 1. Launch the server
 
     ```bash
-    node src/server/index.js
+    SERVER_PORT=3002 PUBLICWEB='./dist/publicweb' node src/server/index.js
     ```
 
 1. Open the browser to http://localhost:3001
