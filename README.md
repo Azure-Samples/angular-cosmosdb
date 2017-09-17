@@ -6,7 +6,7 @@ author: jopapa
 
 # Angular Cosmos DB
 
-by [John Papa](http://twitter.com/john_papa)
+by [John Papa](http://twitter.com/john_papa) and [Brian Clark](http://twitter.com/_clarkio)
 
 You can [watch me build the app as part of my series here](https://johnpapa.net/angular-cosmosdb-1/)
 
@@ -24,6 +24,8 @@ You can [view all videos together here](/VIDEOS.md)
 
 1. Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 
+1. Create a [CosmosDB instance](https://docs.microsoft.com/en-us/azure/cosmos-db/tutorial-develop-mongodb-nodejs-part4)
+
 ## Getting Started
 
 1. Clone this repository
@@ -39,20 +41,36 @@ You can [view all videos together here](/VIDEOS.md)
     npm i
     ```
 
-1. Configure Cosmos DB server settings
+1. Register your app with Twitter for login
+    - Go to [Twitter Apps](https://apps.twitter.com/)
+    - Click "Create New App" and fill in your application's information
+    - Once created, click on the "Keys and Access Tokens" tab
+    - Take note of your Twitter API Key and Secret to use in the app configuration
+
+1. Configure Cosmos DB server and Twitter settings
 
     Rename the `example-environment.js` file to `environment.js` in the `server/env/` folder and update it with your Cosmos DB settings. Replace the database name key, and port with your specific configuration.
 
     ```javascript
-    // server/env/environment.js
-    const cosmosPort = 1234; // replace with your port
-    const dbName = 'your-cosmos-db-name-goes-here';
-    const key = 'your-key-goes-here';
+    // Replace with your default values
+    const serverPort = process.env.SERVER_PORT || 3001;
+
+    const cosmos = {
+      comsosDbName: process.env.COSMOSDB_NAME || 'your-cosmosdb-name-goes-here', //
+      cosmosDbKey: process.env.COSMOSDB_KEY || 'your-cosmosdb-key-goes-here',
+      cosmosDbPort: process.env.COSMOSDB_PORT || 10255 // replace with your port
+    };
+
+    const twitter = {
+      consumerKey: process.env.TWITTER_CLIENT_KEY || 'your-twitter-client-key-goes-here',
+      consumerSecret: process.env.TWITTER_CLIENT_SECRET || 'your-twitter-client-secret-goes-here',
+      callbackURL: process.env.TWITTER_CALLBACK_URL || 'your-twitter-callback-url'
+    };
 
     module.exports = {
-      cosmosPort,
-      dbName,
-      key
+      serverPort,
+      cosmos,
+      twitter
     };
     ```
 
@@ -74,7 +92,8 @@ You can [view all videos together here](/VIDEOS.md)
 
 ## Docker
 
-Create the Docker image and run it locally
+- Install and run [Docker](https://www.docker.com/community-edition)
+- Create the Docker image and run it locally
 
 ```bash
 # build the image
