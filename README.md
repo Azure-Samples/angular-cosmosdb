@@ -102,7 +102,7 @@ port=3001
 docker build -t $dockerImage .
 
 # create and run the container
-docker run  -d -p $port:3001 -p 5858:5858 -e "TWITTER_CALLBACK_URL=http://localhost:$port/api/auth/twitter/callback" $dockerImage
+docker run -d -p $port:3001 -p 9229:9229 -e "TWITTER_CALLBACK_URL=http://localhost:$port/api/auth/twitter/callback" $dockerImage
 
 open http://localhost:$port
 ```

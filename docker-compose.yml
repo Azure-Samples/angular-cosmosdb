@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  angular-cosmosdb:
+    image: angular-cosmosdb
+    build: .
+    ports:
+      - 3001:3001

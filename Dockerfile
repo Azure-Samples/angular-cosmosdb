@@ -24,6 +24,6 @@ COPY --from=angular-app /app/dist /usr/src/app
 # ENV PORT 80
 # ENV API_URL we-could-set-this-here-as-default
 EXPOSE 3001
-EXPOSE 5858
-# CMD [ "node", "index.js" ]
-CMD ["node", "--inspect=0.0.0.0:5858", "index.js"]
+# EXPOSE 9229
+CMD [ "node", "index.js" ]
+# CMD ["node", "--inspect=0.0.0.0:5858", "index.js"]
