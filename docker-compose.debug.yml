@@ -8,9 +8,7 @@ services:
       TWITTER_CALLBACK_URL: http://localhost:3001/api/auth/twitter/callback
     ports:
       - 3001:3001
-      - 5858:5858
+      - 9229:9229
     expose:
-      - 5858
-    volumes:
-      - .:/usr/src/app
-    command: node --inspect src/server/index.js
+    - 9229
+    command: node --inspect index.js
