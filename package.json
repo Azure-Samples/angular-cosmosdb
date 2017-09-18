@@ -12,7 +12,7 @@
     "docker": "docker-compose up -d --build",
     "docker-debug": "docker-compose -f docker-compose.debug.yml up -d --build",
     "docker-down": "docker-compose down",
-    "start": "cd dist && npm i && node index.js && cd .. ",
+    "start": "PUBLICWEB=./dist/publicweb node src/server/index.js",
     "start-fresh": "ng b --prod && npm start"
   },
   "private": true,
@@ -28,7 +28,13 @@
     "@angular/router": "^4.2.4",
     "core-js": "^2.4.1",
     "rxjs": "^5.4.2",
-    "zone.js": "^0.8.14"
+    "zone.js": "^0.8.14",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-session": "^1.15.5",
+    "mongoose": "^4.11.1",
+    "passport": "^0.4.0",
+    "passport-twitter": "^1.0.4"
   },
   "devDependencies": {
     "@angular/cli": "1.4.2",
