@@ -90,7 +90,32 @@ You can [view all videos together here](/VIDEOS.md)
 
 1. Open the browser to http://localhost:3001
 
+
 ## Docker
+
+- Install and run [Docker](https://www.docker.com/community-edition)
+
+### Docker Compose
+
+- Create the Docker image and run it locally
+
+```bash
+docker-compose up -d --build
+open http://localhost:3001
+```
+
+### Docker Compose with Debugging
+
+- Create the Docker image and run it locally
+
+```bash
+docker-compose -f docker-compose.debug.yml up -d --build
+open http://localhost:3001
+```
+
+Open VS Code, launch the `Docker: Attach to Node` debugging profile
+
+### Docker Run
 
 - Install and run [Docker](https://www.docker.com/community-edition)
 - Create the Docker image and run it locally
