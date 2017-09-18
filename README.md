@@ -76,16 +76,10 @@ You can [view all videos together here](/VIDEOS.md)
 
 ## Running the app
 
-1. Build the Angular app
+1. Build the Angular app and launch the node server
 
     ```bash
-    ng build --prod
-    ```
-
-1. Launch the server
-
-    ```bash
-    node src/server/index.js
+    npm run start-fresh
     ```
 
 1. Open the browser to http://localhost:3001

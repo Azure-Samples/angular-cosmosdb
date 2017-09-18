@@ -4,7 +4,6 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "node src/server/index.js",
     "start-ng": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -12,7 +11,9 @@
     "e2e": "ng e2e",
     "docker": "docker-compose up -d --build",
     "docker-debug": "docker-compose -f docker-compose.debug.yml up -d --build",
-    "docker-down": "docker-compose down"
+    "docker-down": "docker-compose down",
+    "start": "cd dist && npm i && node index.js && cd .. ",
+    "start-fresh": "ng b --prod && npm start"
   },
   "private": true,
   "dependencies": {
@@ -26,11 +27,6 @@
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
     "core-js": "^2.4.1",
-    "express": "^4.15.3",
-    "express-session": "^1.15.5",
-    "mongoose": "^4.11.1",
-    "passport": "^0.4.0",
-    "passport-twitter": "^1.0.4",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },

@@ -7,7 +7,7 @@ const TwitterStrategy = require('passport-twitter').Strategy;
 const env = require('./env/environment');
 const routes = require('./routes');
 
-const publicweb = process.env.PUBLICWEB || './dist/publicweb';
+const publicweb = process.env.PUBLICWEB || './publicweb';
 const app = express();
 
 app.use(bodyParser.json());
