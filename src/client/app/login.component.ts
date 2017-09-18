@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { HeroService } from './hero.service';
+import { ToastService } from './toast.service';
 
 @Component({
   selector: 'app-login',
@@ -16,13 +17,13 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   username: string;
 
-  constructor(private heroService: HeroService) { }
+  constructor(private heroService: HeroService, private toastService: ToastService) {}
 
   ngOnInit() {
     this.heroService.getProfile().subscribe(result => {
       this.username = result.username;
       this.isLoggedIn = !!this.username;
-    })
+    });
   }
 
   login() {
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
 
   logout() {
     this.heroService.logout().subscribe(result => {
+      this.toastService.activate(`you logged out, don't go, it makes us sad`);
       console.log(result);
       this.username = '';
       this.isLoggedIn = false;

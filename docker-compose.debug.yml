@@ -6,9 +6,10 @@ services:
     build: .
     environment:
       TWITTER_CALLBACK_URL: http://localhost:3001/api/auth/twitter/callback
+      PUBLICWEB: ./publicweb
     ports:
       - 3001:3001
       - 9229:9229
     expose:
-    - 9229
+      - 9229
     command: node --inspect index.js

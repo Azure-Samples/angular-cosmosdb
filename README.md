@@ -79,13 +79,13 @@ You can [view all videos together here](/VIDEOS.md)
 1. Build the Angular app
 
     ```bash
-    ng build
+    ng build --prod
     ```
 
 1. Launch the server
 
     ```bash
-    SERVER_PORT=3002 PUBLICWEB='./dist/publicweb' node src/server/index.js
+    node src/server/index.js
     ```
 
 1. Open the browser to http://localhost:3001
@@ -100,7 +100,7 @@ You can [view all videos together here](/VIDEOS.md)
 - Create the Docker image and run it locally
 
 ```bash
-docker-compose up -d --build
+npm run docker
 open http://localhost:3001
 ```
 
@@ -109,7 +109,7 @@ open http://localhost:3001
 - Create the Docker image and run it locally
 
 ```bash
-docker-compose -f docker-compose.debug.yml up -d --build
+npm run docker-debug
 open http://localhost:3001
 ```
 
