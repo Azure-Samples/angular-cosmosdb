@@ -9,6 +9,9 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "cookie-parser": "~1.4.3",
+    "csurf": "~1.9.0",
+    "lusca": "~1.5.1",
     "express-session": "^1.15.5",
     "helmet": "~3.8.1",
     "mongoose": "^4.11.1",

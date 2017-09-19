@@ -17,7 +17,12 @@ function getHeroes(req, res) {
 }
 
 function postHero(req, res) {
-  const originalHero = { id: req.body.id, name: req.body.name, saying: req.body.saying };
+  const originalHero = {
+    id: req.body.id,
+    name: req.body.name,
+    saying: req.body.saying,
+    createdBy: req.user.username
+  };
   const hero = new Hero(originalHero);
   hero.save(error => {
     if (checkServerError(res, error)) return;
@@ -30,7 +35,8 @@ function putHero(req, res) {
   const originalHero = {
     id: parseInt(req.params.id, 10),
     name: req.body.name,
-    saying: req.body.saying
+    saying: req.body.saying,
+    updatedBy: req.user.username
   };
   Hero.findOne({ id: originalHero.id }, (error, hero) => {
     if (checkServerError(res, error)) return;
