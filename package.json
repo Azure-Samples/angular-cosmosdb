@@ -13,7 +13,8 @@
     "docker-debug": "docker-compose -f docker-compose.debug.yml up -d --build",
     "docker-down": "docker-compose down",
     "start": "cd dist && npm i && node index.js && cd .. ",
-    "start-fresh": "ng b --prod && npm start"
+    "start-fresh": "ng b --prod && npm start",
+    "debug": "PUBLICWEB=./dist/publicweb node --inspect src/server/index"
   },
   "private": true,
   "dependencies": {

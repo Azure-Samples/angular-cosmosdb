@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
+const helmet = require('helmet');
 const TwitterStrategy = require('passport-twitter').Strategy;
 
 const env = require('./env/environment');
@@ -10,6 +11,7 @@ const routes = require('./routes');
 const publicweb = process.env.PUBLICWEB || './publicweb';
 const app = express();
 
+app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
@@ -47,7 +49,7 @@ passport.use(
   )
 );
 
-console.log(env);
+console.log(env.twitter.callbackURL);
 
 const port = env.serverPort;
 app.listen(port, () => console.log(`API running on localhost:${port}`));
