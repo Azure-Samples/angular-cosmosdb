@@ -14,7 +14,7 @@
     "docker-down": "docker-compose down",
     "start": "cd dist && npm i && node index.js && cd .. ",
     "start-fresh": "ng b --prod && npm start",
-    "debug": "PUBLICWEB=./dist/publicweb node --inspect-brk src/server/index"
+    "debug": "PUBLICWEB=./dist/publicweb node --inspect src/server/index"
   },
   "private": true,
   "dependencies": {
