@@ -11,6 +11,7 @@ RUN ng build --prod
 #Express server =======================================
 FROM node:6.11-alpine as express-server
 WORKDIR /app
+COPY package.json /app
 COPY /src/server /app
 RUN npm install --production --silent
 
