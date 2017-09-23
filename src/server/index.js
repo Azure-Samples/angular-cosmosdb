@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const csrf = require('csurf');
 const passport = require('passport');
 const helmet = require('helmet');
 const TwitterStrategy = require('passport-twitter').Strategy;
@@ -12,6 +14,7 @@ const publicweb = process.env.PUBLICWEB || './publicweb';
 const app = express();
 
 app.use(helmet());
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
@@ -21,6 +24,12 @@ app.use(
     saveUninitialized: true
   })
 );
+
+app.use(csrf());
+app.use((req, res, next) => {
+  res.cookie('XSRF-TOKEN', req.csrfToken());
+  return next();
+});
 
 // Initialize Passport
 // and restore authentication state, if any, from the session.
@@ -52,4 +61,4 @@ passport.use(
 console.log(env.twitter.callbackURL);
 
 const port = env.serverPort;
-app.listen(port, () => console.log(`API running on localhost:${port}`));
+app.listen(port, () => console.log(`API running on http://localhost:${port}`));
