@@ -12,8 +12,8 @@
     "docker": "docker-compose up -d --build",
     "docker-debug": "docker-compose -f docker-compose.debug.yml up -d --build",
     "docker-down": "docker-compose down",
-    "start": "PUBLICWEB=./dist/publicweb node src/server/index.js",
     "start-fresh": "ng b --prod && npm start",
+    "start": "PUBLICWEB=./dist/publicweb node src/server/index.js",
     "debug": "PUBLICWEB=./dist/publicweb node --inspect src/server/index"
   },
   "private": true,
