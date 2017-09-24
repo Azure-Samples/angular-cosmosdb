@@ -7,7 +7,8 @@ const passport = require('passport');
 const helmet = require('helmet');
 const TwitterStrategy = require('passport-twitter').Strategy;
 
-const env = require('./env/environment');
+const env = require('./env/' + (process.env.NODE_ENV || 'development'));
+
 const routes = require('./routes');
 
 const publicweb = process.env.PUBLICWEB || './publicweb';
@@ -43,20 +44,22 @@ app.get('*', (req, res) => {
   res.sendFile(`index.html`, { root: publicweb });
 });
 
-passport.use(
-  new TwitterStrategy(
-    {
-      consumerKey: env.twitter.consumerKey,
-      consumerSecret: env.twitter.consumerSecret,
-      callbackURL: env.twitter.callbackURL
-    },
-    (token, tokenSecret, profile, done) => {
-      // find the user in this app's database using their twitter account
-      console.log(profile);
-      return done(null, profile);
-    }
-  )
-);
+if (env.twitter.consumerKey) {
+  passport.use(
+    new TwitterStrategy(
+      {
+        consumerKey: env.twitter.consumerKey,
+        consumerSecret: env.twitter.consumerSecret,
+        callbackURL: env.twitter.callbackURL
+      },
+      (token, tokenSecret, profile, done) => {
+        // find the user in this app's database using their twitter account
+        console.log(profile);
+        return done(null, profile);
+      }
+    )
+  );
+}
 
 console.log(env.twitter.callbackURL);
 
