@@ -53,21 +53,23 @@ You can [view all videos together here](/VIDEOS.md)
 
     ```javascript
     const serverPort = 3001;
+    const sessionSecret = 'your-unique-randomly-generated-secret';
 
     const cosmos = {
-      name: 'my-heroes-db',
-      key: 'sIdSO7GRexmdp747DIZNk9G1cvLKtnUnU3Y8rE8e63ZNf8AEFHVDIWikWMhCwNJiAQXOJQWThCY8nRPFygF78g==',
+      name: 'your-cosmosdb-name',
+      key: 'your-cosmosdb-key',
       port: 10255
     };
 
     const twitter = {
-      consumerKey: 'AnUBGSNy2IDZFBb2MsJ9CPeFu',
-      consumerSecret: 'zRnAMVerhDcFdIxv4PIuJOkvdQTaLMcXV49aWYiUAv1yMcuJjj',
+      consumerKey: 'your-twitter-app-key',
+      consumerSecret: 'your-twitter-app-secret',
       callbackURL: `http://localhost:3001/api/auth/twitter/callback`
     };
 
     module.exports = {
       serverPort,
+      sessionSecret,
       cosmos,
       twitter
     };

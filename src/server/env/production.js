@@ -1,4 +1,5 @@
 const serverPort = process.env.SERVER_PORT || 3001;
+const sessionSecret = process.env.SESSION_SECRET;
 
 const cosmos = {
   name: process.env.COSMOSDB_NAME,
@@ -14,6 +15,7 @@ const twitter = {
 
 module.exports = {
   serverPort,
+  sessionSecret,
   cosmos,
   twitter
 };
