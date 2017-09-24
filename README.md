@@ -49,26 +49,27 @@ You can [view all videos together here](/VIDEOS.md)
 
 1. Configure Cosmos DB server and Twitter settings
 
-    Rename the `example-environment.js` file to `environment.js` in the `server/env/` folder and update it with your Cosmos DB settings. Replace the database name key, and port with your specific configuration.
+    Create a file with the following name and location `server/env/development.js` and copy the contents from `server/env/example.js` into it. Replace the values with your specific configuration.
 
     ```javascript
-    // Replace with your default values
-    const serverPort = process.env.SERVER_PORT || 3001;
+    const serverPort = 3001;
+    const sessionSecret = 'your-unique-randomly-generated-secret';
 
     const cosmos = {
-      comsosDbName: process.env.COSMOSDB_NAME || 'your-cosmosdb-name-goes-here', //
-      cosmosDbKey: process.env.COSMOSDB_KEY || 'your-cosmosdb-key-goes-here',
-      cosmosDbPort: process.env.COSMOSDB_PORT || 10255 // replace with your port
+      name: 'your-cosmosdb-name',
+      key: 'your-cosmosdb-key',
+      port: 10255
     };
 
     const twitter = {
-      consumerKey: process.env.TWITTER_CLIENT_KEY || 'your-twitter-client-key-goes-here',
-      consumerSecret: process.env.TWITTER_CLIENT_SECRET || 'your-twitter-client-secret-goes-here',
-      callbackURL: process.env.TWITTER_CALLBACK_URL || 'your-twitter-callback-url'
+      consumerKey: 'your-twitter-app-key',
+      consumerSecret: 'your-twitter-app-secret',
+      callbackURL: `http://localhost:3001/api/auth/twitter/callback`
     };
 
     module.exports = {
       serverPort,
+      sessionSecret,
       cosmos,
       twitter
     };
@@ -121,7 +122,7 @@ port=3001
 docker build -t $dockerImage .
 
 # create and run the container
-docker run -d -p $port:3001 -p 9229:9229 -e "TWITTER_CALLBACK_URL=http://localhost:$port/api/auth/twitter/callback" $dockerImage
+docker run -d -p $port:3001 -p 9229:9229 -e "NODE_ENV=development" $dockerImage
 
 open http://localhost:$port
 ```

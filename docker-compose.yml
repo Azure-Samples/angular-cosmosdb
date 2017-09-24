@@ -6,6 +6,7 @@ services:
     build: .
     environment:
       TWITTER_CALLBACK_URL: http://localhost:3001/api/auth/twitter/callback
+      NODE_ENV: production
     ports:
       - 3001:3001
     command: node index.js

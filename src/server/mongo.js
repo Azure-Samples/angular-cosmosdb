@@ -5,15 +5,15 @@ const mongoose = require('mongoose');
  */
 mongoose.Promise = global.Promise;
 
-const env = require('./env/environment');
+const env = require('./env/' + (process.env.NODE_ENV || 'development'));
 const dbSettings = {
-  comsosDbName: env.cosmos.comsosDbName,
-  cosmosDbKey: env.cosmos.cosmosDbKey,
-  cosmosDbPort: env.cosmos.cosmosDbPort
+  name: env.cosmos.name,
+  key: env.cosmos.key,
+  port: env.cosmos.port
 };
 
 // eslint-disable-next-line max-len
-const mongoUri = `mongodb://${dbSettings.comsosDbName}:${dbSettings.cosmosDbKey}@${dbSettings.comsosDbName}.documents.azure.com:${dbSettings.cosmosDbPort}/?ssl=true`; //&replicaSet=globaldb`;
+const mongoUri = `mongodb://${dbSettings.name}:${dbSettings.key}@${dbSettings.name}.documents.azure.com:${dbSettings.port}/?ssl=true`; //&replicaSet=globaldb`;
 
 function connect() {
   mongoose.set('debug', true);
