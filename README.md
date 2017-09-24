@@ -49,7 +49,7 @@ You can [view all videos together here](/VIDEOS.md)
 
 1. Configure Cosmos DB server and Twitter settings
 
-    Copy the `server/env/example.js` file to a ne file named `server/env/development.js`. Replace the the values with your specific configuration.
+    Create a file with the following name and location `server/env/development.js` and copy the contents from `server/env/example.js` into it. Replace the values with your specific configuration.
 
     ```javascript
     const serverPort = 3001;
