@@ -31,7 +31,6 @@
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14",
     "body-parser": "~1.17.2",
-    "cookie-parser": "~1.4.3",
     "csurf": "~1.9.0",
     "express": "~4.15.3",
     "express-session": "~1.15.5",
