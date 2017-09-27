@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
   angular-cosmosdb:
-    image: angular-cosmosdb
+    image: johnpapa/angular-cosmosdb:latest
     build: .
     environment:
       TWITTER_CALLBACK_URL: http://localhost:3001/api/auth/twitter/callback
