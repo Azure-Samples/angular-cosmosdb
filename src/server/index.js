@@ -16,8 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use([
-  passport.initialize(),
-  passport.session(),
+  helmet(),
   session({
     secret: env.sessionSecret,
     resave: true,
