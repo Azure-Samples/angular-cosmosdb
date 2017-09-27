@@ -11,15 +11,13 @@ const routes = require('./routes');
 const publicweb = process.env.PUBLICWEB || './publicweb';
 
 const app = express();
-
-/* Security headers */
-app.use(helmet());
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Security headers
+app.use(helmet());
 // Set up a session to store and track each unique client
-// This is also leveraged by passport for users
+// This is also leveraged by passport.
 app.use(
   session({
     secret: env.sessionSecret,
@@ -27,19 +25,14 @@ app.use(
     saveUninitialized: true
   })
 );
-
-/* Authentication with Passportjs */
-// Initialize Passport
-// and restore authentication state, if any, from the session.
+// Initialize and restore authentication state, if any, from the session.
 app.use(passport.initialize());
 app.use(passport.session());
-
-/* CSRF Mitigation */
-app.use(csrf());
-// Send back a cookie for Angular using the naming convention XSRF-TOKEN
+// Send a cookie using the naming convention XSRF-TOKEN
 // and set its value to the token created by the csurf module
+app.use(csrf());
 app.use((req, res, next) => {
-  //The .csrfToken() function is added by the csurf module
+  // The .csrfToken() function is added by the csurf module
   res.cookie('XSRF-TOKEN', req.csrfToken());
   return next();
 });
@@ -51,7 +44,4 @@ app.get('*', (req, res) => {
   res.sendFile(`index.html`, { root: publicweb });
 });
 
-console.log(env.twitter.callbackURL);
-
-const port = env.serverPort;
-app.listen(port, () => console.log(`API running on http://localhost:${port}`));
+app.listen(env.serverPort, () => console.log(`API running on http://localhost:${env.serverPort}`));
