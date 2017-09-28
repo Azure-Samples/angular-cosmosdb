@@ -61,6 +61,8 @@ typings/
 
 # ignore server configuration
 src/server/env/development.js
+docker-compose.local.yml
+*.azcli
 
 # compiled output
 /dist
