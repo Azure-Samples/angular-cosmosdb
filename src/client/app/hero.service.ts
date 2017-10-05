@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Hero } from './hero';
+import { Observable } from 'rxjs/Observable';
 
 const api = '/api';
 
@@ -18,7 +19,13 @@ export class HeroService {
   }
 
   getHeroes() {
-    return this.http.get<Array<Hero>>(`${api}/heroes`);
+    return this.http.get<Array<Hero>>(`${api}/heroes2`)
+    .catch(this.handleError);
+  }
+
+  private handleError(res: HttpErrorResponse) {
+    console.error(res.error);
+    return Observable.throw(res.error || 'Server error');
   }
 
   deleteHero(hero: Hero) {
