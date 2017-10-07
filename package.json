@@ -6,23 +6,20 @@
     "ng": "ng",
     "start-ng": "ng serve",
     "build": "ng build",
-
     "booyah": "ng build --prod --build-optimizer",
     "sme": "./node_modules/.bin/source-map-explorer",
     "gen-stats": "ng build --prod --build-optimizer -sm --stats-json",
     "gen-report": "webpack-bundle-analyzer dist/publicweb/stats.json",
-
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-
     "docker": "docker-compose up -d --build",
     "docker-local": "docker-compose -f docker-compose.local.yml up -d --build",
     "docker-debug": "docker-compose -f docker-compose.debug.yml up -d --build",
     "docker-down": "docker-compose down",
     "start-fresh": "ng b --prod && npm start",
-    "start": "PUBLICWEB=./dist/publicweb node src/server/index.js",
-    "debug": "PUBLICWEB=./dist/publicweb node --inspect src/server/index"
+    "start": "PUBLICWEB=./dist/publicweb SERVER_PORT=3002 node src/server/index.js",
+    "debug": "PUBLICWEB=./dist/publicweb SERVER_PORT=3002 node --inspect-brk src/server/index.js"
   },
   "private": true,
   "dependencies": {
