@@ -44,6 +44,8 @@ function putHero(req, res) {
 
     hero.name = originalHero.name;
     hero.saying = originalHero.saying;
+    hero.url = originalHero.url;
+    hero.updatedBy = originalHero.updatedBy;
     hero.save(error => {
       if (checkServerError(res, error)) return;
       res.status(200).json(hero);

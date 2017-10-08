@@ -19,8 +19,7 @@ export class HeroService {
   }
 
   getHeroes() {
-    return this.http.get<Array<Hero>>(`${api}/heroes2`)
-    .catch(this.handleError);
+    return this.http.get<Array<Hero>>(`${api}/heroes`).catch(this.handleError);
   }
 
   private handleError(res: HttpErrorResponse) {

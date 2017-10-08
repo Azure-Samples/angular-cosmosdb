@@ -6,7 +6,9 @@ const heroSchema = new Schema(
   {
     id: { type: Number, required: true, unique: true },
     name: String,
-    saying: String
+    saying: String,
+    createdBy: String,
+    updatedBy: String
   },
   {
     collection: 'heroes',

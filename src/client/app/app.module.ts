@@ -10,9 +10,10 @@ import { AuthInterceptor } from './auth.interceptor';
 import { LoginComponent } from './login.component';
 import { ToastComponent } from './toast.component';
 import { ToastService } from './toast.service';
+import { SafePipe } from './safe.pipe';
 
 @NgModule({
-  declarations: [AppComponent, HeroesComponent, LoginComponent, ToastComponent],
+  declarations: [AppComponent, HeroesComponent, LoginComponent, ToastComponent, SafePipe],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [
     HeroService,

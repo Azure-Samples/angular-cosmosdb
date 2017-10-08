@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
@@ -11,8 +12,11 @@ export class HeroesComponent implements OnInit {
   addingHero = false;
   heroes: any = [];
   selectedHero: Hero;
+  _sanitizer: DomSanitizer;
 
-  constructor(private heroService: HeroService) {}
+  constructor(private heroService: HeroService, private sanitizer: DomSanitizer) {
+    this._sanitizer = sanitizer;
+  }
 
   ngOnInit() {
     this.getHeroes();

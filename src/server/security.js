@@ -8,19 +8,22 @@ require('./config/passport');
 
 module.exports = function() {
   const middleware = [
-    helmet(),
+    // helmet(),
     session({
       secret: env.sessionSecret,
       resave: true,
-      saveUninitialized: true
+      saveUninitialized: true,
+      cookie: {
+        httpOnly: false
+      }
     }),
     passport.initialize(),
-    passport.session(),
-    csrf(),
-    (req, res, next) => {
-      res.cookie('XSRF-TOKEN', req.csrfToken());
-      return next();
-    }
+    passport.session()
+    // csrf(),
+    // (req, res, next) => {
+    //   res.cookie('XSRF-TOKEN', req.csrfToken());
+    //   return next();
+    // }
   ];
   return middleware;
 };
