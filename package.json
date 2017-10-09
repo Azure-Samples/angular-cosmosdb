@@ -14,7 +14,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "docker": "docker-compose up -d --build",
-    "docker-local": "docker-compose -f docker-compose.local.yml up -d --build",
     "docker-debug": "docker-compose -f docker-compose.debug.yml up -d --build",
     "docker-down": "docker-compose down",
     "start-fresh": "ng b --prod && npm start",
