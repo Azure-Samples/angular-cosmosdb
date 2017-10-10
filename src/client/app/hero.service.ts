@@ -4,6 +4,10 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Hero } from './hero';
 import { Observable } from 'rxjs/Observable';
 
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+// import 'rxjs/Rx';
+
 const api = '/api';
 
 @Injectable()
@@ -20,6 +24,7 @@ export class HeroService {
 
   getHeroes() {
     return this.http.get<Array<Hero>>(`${api}/heroes`)
+    .map(heroes => heroes)
     .catch(this.handleError);
   }
 
