@@ -49,7 +49,7 @@ You can [view all videos together here](/VIDEOS.md)
 
 1. Configure Cosmos DB server and Twitter settings
 
-    Create a file with the following name and location `server/env/development.js` and copy the contents from `server/env/example.js` into it. Replace the values with your specific configuration.
+    Create a file with the following name and location `server/env/development.js` and copy the contents from `server/env/example.js` into it. Replace the values with your specific configuration. Don't worry, this file is in the `.gitignore` so it won't get pushed to github.
 
     ```javascript
     const serverPort = 3001;
@@ -85,23 +85,23 @@ You can [view all videos together here](/VIDEOS.md)
 
 1. Open the browser to http://localhost:3001
 
-
 ## Docker
 
 - Install and run [Docker](https://www.docker.com/community-edition)
 
 ### Docker Compose
 
-- Create the Docker image and run it locally
+Create the Docker image that you can `docker push` to a registry. This commands uses `docker-compose` to build the image and run the container. This image expects environment variables to be set in whichever cloud provider you push to.
 
 ```bash
 npm run docker
-open http://localhost:3001
 ```
 
 ### Docker Compose with Debugging
 
-- Create the Docker image and run it locally
+Create the Docker image and run it locally. This commands uses `docker-compose` to build the image and run the container.
+
+This uses your `server/env/developmentjs` settings and opens port `9229` for debugging.
 
 ```bash
 npm run docker-debug
@@ -114,6 +114,7 @@ Open VS Code, launch the `Docker: Attach to Node` debugging profile
 
 - Install and run [Docker](https://www.docker.com/community-edition)
 - Create the Docker image and run it locally
+- We recommend using the `npm run docker-debug` instead of this, as it is easier and more powerful
 
 ```bash
 # build the image
