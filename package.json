@@ -8,7 +8,7 @@
     "build": "ng build",
     "booyah": "ng build --prod --build-optimizer",
     "sme": "./node_modules/.bin/source-map-explorer",
-    "gen-stats": "ng build --prod --build-optimizer -sm --stats-json",
+    "gen-stats": "ng build --prod --stats-json",
     "gen-report": "webpack-bundle-analyzer dist/publicweb/stats.json",
     "test": "ng test",
     "lint": "ng lint",
