@@ -24,4 +24,3 @@ COPY --from=angular-app /app/dist /usr/src/app
 
 EXPOSE 3001
 CMD [ "node", "index.js" ]
-# CMD ["node", "--inspect=0.0.0.0:5858", "index.js"]
