@@ -9,7 +9,7 @@ import { ToastService } from './toast.service';
     <div>
       <button (click)="login()" [hidden]="isLoggedIn">Login</button>
       <button (click)="logout()" [hidden]="!isLoggedIn">Logout</button>
-      <p [hidden]="!username">Logged in as {{username}}</p>
+      <p class="logged-in-as" [hidden]="!username">Logged in as {{username}}</p>
     </div>
   `
 })
