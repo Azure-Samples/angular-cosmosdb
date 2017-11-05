@@ -32,7 +32,7 @@ function isLoggedIn(req, res, next) {
 
 function isValidAdmin(requestUser) {
   const validUsers = ['john_papa', '_clarkio'];
-  return validUsers.find(user => requestUser.username === user)
+  return validUsers.find(user => requestUser.username === user.toLowerCase())
 }
 
 // Starts the login/authentication flow indicating to use Twitter
