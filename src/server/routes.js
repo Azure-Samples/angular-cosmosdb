@@ -23,11 +23,16 @@ router.delete('/hero/:id', isLoggedIn, (req, res) => {
 function isLoggedIn(req, res, next) {
   // If user is authenticated in the session
   // carry on to the next middleware function
-  if (req.isAuthenticated()) {
+  if (req.isAuthenticated() && isValidAdmin(req.user)) {
     return next();
   } else {
     res.status(401).send({ message: 'unauthorized. please log in and try again' });
   }
+}
+
+function isValidAdmin(requestUser) {
+  const validUsers = ['john_papa', '_clarkio'];
+  return validUsers.find(user => requestUser.username === user)
 }
 
 // Starts the login/authentication flow indicating to use Twitter
