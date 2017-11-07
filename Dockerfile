@@ -4,7 +4,7 @@ LABEL authors="Brian Clark, John Papa"
 # Copy and install the Angular app
 WORKDIR /app
 COPY package.json /app
-RUN npm install
+RUN npm install --silent
 COPY . /app
 RUN ng build --prod
 
