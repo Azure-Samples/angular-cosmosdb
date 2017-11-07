@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <app-toast></app-toast>
     <h1>
-      Live Coding Some Angular Heroes with Nick
+      Live Coding Some Angular Heroes
     </h1>
     <app-login></app-login>
     <div class="header-bar"></div>
