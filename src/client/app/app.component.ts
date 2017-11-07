@@ -5,11 +5,11 @@ import { Component } from '@angular/core';
   template: `
     <app-toast></app-toast>
     <h1>
-      Live Coding Some Angular Heroes
+      Live Coding Some Angular Heroes with Nick
     </h1>
     <app-login></app-login>
     <div class="header-bar"></div>
     <app-heroes></app-heroes>
   `
 })
-export class AppComponent {}
+export class AppComponent { }
