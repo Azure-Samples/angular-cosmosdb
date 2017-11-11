@@ -56,7 +56,8 @@ You can [view all videos together here](/VIDEOS.md)
     const sessionSecret = 'your-unique-randomly-generated-secret';
 
     const cosmos = {
-      name: 'your-cosmosdb-name',
+      accountName: 'your-cosmosdb-account-name',
+      databaseName: 'your-database-name',
       key: 'your-cosmosdb-key',
       port: 10255
     };
@@ -94,7 +95,7 @@ You can [view all videos together here](/VIDEOS.md)
 Create the Docker image that you can `docker push` to a registry. This commands uses `docker-compose` to build the image and run the container. This image expects environment variables to be set in whichever cloud provider you push to.
 
 ```bash
-npm run docker
+npm run docker-up
 ```
 
 ### Docker Compose with Debugging
