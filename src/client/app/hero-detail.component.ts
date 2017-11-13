@@ -28,7 +28,7 @@ import { Hero } from './hero';
           </div>
           <div>
             <label>saying: </label>
-            <input [(ngModel)]="editingHero.saying" placeholder="saying" />
+            <input [(ngModel)]="editingHero.saying" placeholder="saying" (keyup.enter)="save()"/>
           </div>
         </div>
         <button (click)="clear()">Cancel</button>
