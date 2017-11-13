@@ -21,6 +21,12 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
+  clear() {
+    this.heroes = [];
+    this.addingHero = false;
+    this.selectedHero = this.selectedHero;
+  }
+
   deleteHero(hero: Hero) {
     this.heroService.deleteHero(hero).subscribe(res => {
       this.heroes = this.heroes.filter(h => h !== hero);
@@ -36,8 +42,7 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes() {
-    this.heroes = [];
-    this.selectedHero = null;
+    this.clear();
     return this.heroService.getHeroes().subscribe(heroes => {
       this.heroes = heroes;
     });

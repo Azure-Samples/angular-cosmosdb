@@ -1,12 +1,12 @@
 import {
-  Component,
-  OnInit,
-  Input,
-  EventEmitter,
-  Output,
-  ViewChildren,
   AfterViewInit,
-  ElementRef
+  Component,
+  Input,
+  ElementRef,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewChild
 } from '@angular/core';
 
 import { Hero } from './hero';
@@ -58,18 +58,18 @@ export class HeroDetailComponent implements AfterViewInit, OnInit {
   @Output() unselect = new EventEmitter<string>();
   @Output() heroChanged = new EventEmitter<{ mode: string; hero: Hero }>();
 
-  @ViewChildren('id') idElement: ElementRef;
-  @ViewChildren('name') nameElement: ElementRef;
+  @ViewChild('id') idElement: ElementRef;
+  @ViewChild('name') nameElement: ElementRef;
 
   addingHero = false;
   editingHero: Hero;
 
   ngAfterViewInit() {
-    // if (this.addingHero && this.hero) {
-    //   this.idElement.nativeElement.focus();
-    // } else {
-    //   this.nameElement.nativeElement.focus();
-    // }
+    if (this.addingHero && this.editingHero) {
+      this.idElement.nativeElement.focus();
+    } else {
+      this.nameElement.nativeElement.focus();
+    }
   }
 
   constructor() {}
