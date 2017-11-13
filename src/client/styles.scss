@@ -15,21 +15,21 @@ body,
 input[text],
 button {
   color: #888;
-  // font-family: Cambria, Georgia;
+  font-family: Arial;
 }
 button {
-  font-size: 14px;
+  color: #888;
   font-family: Arial;
+  font-size: 14px;
   background-color: #eee;
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
-  cursor: hand;
+  width: 100px;
   &:hover {
     background-color: #cfd8dc;
   }
-
 }
 div {
   margin: 0.1em;
@@ -56,6 +56,13 @@ input {
     font-size: 12px;
     letter-spacing: 3px;
   }
+}
+
+.header-bar {
+  background-color: rgb(0, 120, 215);
+  height: 4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .toast-container {

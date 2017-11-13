@@ -36,22 +36,7 @@ import { Hero } from './hero';
       </div>
     </div>
     `,
-  styles: [
-    `.editarea {
-      float: left;
-      input {
-        margin: 4px;
-        height: 20px;
-        color: rgb(0, 120, 215);
-      }
-      button {
-        margin: 8px;
-      }
-      .editfields {
-        margin-left: 12px;
-      }
-    }`
-  ]
+  styleUrls: [`./hero-detail.component.scss`]
 })
 export class HeroDetailComponent implements AfterViewInit, OnInit {
   @Input() hero: Hero;
