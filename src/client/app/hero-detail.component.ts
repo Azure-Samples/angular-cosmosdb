@@ -1,0 +1,113 @@
+import {
+  Component,
+  OnInit,
+  Input,
+  EventEmitter,
+  Output,
+  ViewChildren,
+  AfterViewInit,
+  ElementRef
+} from '@angular/core';
+
+import { Hero } from './hero';
+
+@Component({
+  selector: 'app-hero-detail',
+  template: `
+    <div class="editarea">
+      <div>
+        <div class="editfields">
+          <div>
+            <label>id: </label>
+            <input *ngIf="addingHero" type="number" [(ngModel)]="editingHero.id" placeholder="id" #id />
+            <label *ngIf="!addingHero" class="value">{{editingHero.id}}</label>
+          </div>
+          <div>
+            <label>name: </label>
+            <input [(ngModel)]="editingHero.name" placeholder="name" #name />
+          </div>
+          <div>
+            <label>saying: </label>
+            <input [(ngModel)]="editingHero.saying" placeholder="saying" />
+          </div>
+        </div>
+        <button (click)="clear()">Cancel</button>
+        <button (click)="save()">Save</button>
+      </div>
+    </div>
+    `,
+  styles: [
+    `.editarea {
+      float: left;
+      input {
+        margin: 4px;
+        height: 20px;
+        color: rgb(0, 120, 215);
+      }
+      button {
+        margin: 8px;
+      }
+      .editfields {
+        margin-left: 12px;
+      }
+    }`
+  ]
+})
+export class HeroDetailComponent implements AfterViewInit, OnInit {
+  @Input() hero: Hero;
+  @Output() unselect = new EventEmitter<string>();
+  @Output() heroChanged = new EventEmitter<{ mode: string; hero: Hero }>();
+
+  @ViewChildren('id') idElement: ElementRef;
+  @ViewChildren('name') nameElement: ElementRef;
+
+  addingHero = false;
+  editingHero: Hero;
+
+  ngAfterViewInit() {
+    // if (this.addingHero && this.hero) {
+    //   this.idElement.nativeElement.focus();
+    // } else {
+    //   this.nameElement.nativeElement.focus();
+    // }
+  }
+
+  constructor() {}
+
+  ngOnInit() {
+    this.addingHero = !this.hero;
+    this.editingHero = this.cloneIt();
+  }
+
+  addHero() {
+    const hero = this.editingHero;
+    this.emitRefresh('add');
+  }
+
+  clear() {
+    this.unselect.emit();
+    this.editingHero = null;
+  }
+
+  cloneIt() {
+    return Object.assign({}, this.hero);
+  }
+
+  emitRefresh(mode) {
+    this.heroChanged.emit({ mode: mode, hero: this.editingHero });
+    this.clear();
+  }
+
+  save() {
+    if (this.addingHero) {
+      this.addHero();
+    } else {
+      this.updateHero();
+    }
+  }
+
+  updateHero() {
+    const hero = this.editingHero;
+    this.emitRefresh('update');
+  }
+}
