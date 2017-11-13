@@ -6,9 +6,7 @@ import { HeroService } from './hero.service';
 @Component({
   selector: 'app-hero-list',
   templateUrl: './hero-list.component.html',
-  styleUrls: [
-    `./hero-list.component.scss`
-  ]
+  styleUrls: [`./hero-list.component.scss`]
 })
 export class HeroesComponent implements OnInit {
   addingHero = false;
@@ -22,7 +20,6 @@ export class HeroesComponent implements OnInit {
   }
 
   clear() {
-    this.heroes = [];
     this.addingHero = false;
     this.selectedHero = null;
   }
@@ -42,6 +39,7 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes() {
+    this.heroes = [];
     this.clear();
     return this.heroService.getHeroes().subscribe(heroes => {
       this.heroes = heroes;
@@ -57,7 +55,6 @@ export class HeroesComponent implements OnInit {
     const hero = arg.hero;
     console.log('hero changed', hero);
     if (arg.mode === 'add') {
-      // if (this.addingHero) {
       this.heroService.addHero(hero).subscribe(() => {
         this.addingHero = false;
         this.selectedHero = null;
@@ -67,8 +64,7 @@ export class HeroesComponent implements OnInit {
       this.heroService.updateHero(hero).subscribe(() => {
         const index = this.heroes.findIndex(h => hero.id === h.id);
         this.heroes.splice(index, 1, hero);
-        // this.addingHero = false;
-        // this.selectedHero = null;
+        this.clear();
       });
     }
   }
