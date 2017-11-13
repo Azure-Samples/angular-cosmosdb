@@ -92,11 +92,11 @@ module.exports = router;
 ng g c heroes --flat
 ```
 
-1. Copy this code into `heroes.component.html`
+1. Copy this code into `hero-list.component.html`
 
 1. Copy the styles.scss code
 
-1. Copy this code into `heroes.component.ts`
+1. Copy this code into `hero-list.component.ts`
 
 1. Add the hero component's selector to the `app.component.ts`
 

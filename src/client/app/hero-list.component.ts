@@ -5,9 +5,9 @@ import { HeroService } from './hero.service';
 
 @Component({
   selector: 'app-heroes',
-  templateUrl: './heroes.component.html',
+  templateUrl: './hero-list.component.html',
   styleUrls: [
-    `./heroes.component.scss`
+    `./hero-list.component.scss`
   ]
 })
 export class HeroesComponent implements OnInit {
@@ -24,7 +24,7 @@ export class HeroesComponent implements OnInit {
   clear() {
     this.heroes = [];
     this.addingHero = false;
-    this.selectedHero = this.selectedHero;
+    this.selectedHero = null;
   }
 
   deleteHero(hero: Hero) {

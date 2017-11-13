@@ -5,7 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeroService } from './hero.service';
-import { HeroesComponent } from './heroes.component';
+import { HeroesComponent } from './hero-list.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { LoginComponent } from './login.component';
 import { ToastComponent } from './toast.component';
