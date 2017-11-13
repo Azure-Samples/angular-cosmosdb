@@ -4,8 +4,11 @@ import { Hero } from './hero';
 import { HeroService } from './hero.service';
 
 @Component({
-  selector: 'app-heroes',
-  templateUrl: './heroes.component.html'
+  selector: 'app-hero-list',
+  templateUrl: './hero-list.component.html',
+  styleUrls: [
+    `./hero-list.component.scss`
+  ]
 })
 export class HeroesComponent implements OnInit {
   addingHero = false;
@@ -18,7 +21,8 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
-  cancel() {
+  clear() {
+    this.heroes = [];
     this.addingHero = false;
     this.selectedHero = null;
   }
@@ -32,15 +36,16 @@ export class HeroesComponent implements OnInit {
     });
   }
 
+  enableAddMode() {
+    this.addingHero = true;
+    this.selectedHero = null;
+  }
+
   getHeroes() {
+    this.clear();
     return this.heroService.getHeroes().subscribe(heroes => {
       this.heroes = heroes;
     });
-  }
-
-  enableAddMode() {
-    this.addingHero = true;
-    this.selectedHero = new Hero();
   }
 
   onSelect(hero: Hero) {
@@ -48,18 +53,28 @@ export class HeroesComponent implements OnInit {
     this.selectedHero = hero;
   }
 
-  save() {
-    if (this.addingHero) {
-      this.heroService.addHero(this.selectedHero).subscribe(hero => {
+  save(arg) {
+    const hero = arg.hero;
+    console.log('hero changed', hero);
+    if (arg.mode === 'add') {
+      // if (this.addingHero) {
+      this.heroService.addHero(hero).subscribe(() => {
         this.addingHero = false;
         this.selectedHero = null;
         this.heroes.push(hero);
       });
     } else {
-      this.heroService.updateHero(this.selectedHero).subscribe(hero => {
-        this.addingHero = false;
-        this.selectedHero = null;
+      this.heroService.updateHero(hero).subscribe(() => {
+        const index = this.heroes.findIndex(h => hero.id === h.id);
+        this.heroes.splice(index, 1, hero);
+        // this.addingHero = false;
+        // this.selectedHero = null;
       });
     }
+  }
+
+  unselect() {
+    this.addingHero = false;
+    this.selectedHero = null;
   }
 }

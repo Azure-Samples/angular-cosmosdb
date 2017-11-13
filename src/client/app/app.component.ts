@@ -4,12 +4,12 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <app-toast></app-toast>
-    <h1>
-      Hi DevFest
-    </h1>
+    <h1>{{ title }}</h1>
     <app-login></app-login>
     <div class="header-bar"></div>
-    <app-heroes></app-heroes>
+    <app-hero-list></app-hero-list>
   `
 })
-export class AppComponent { }
+export class AppComponent {
+  title = 'Angular CosmosDB on Azure';
+}
