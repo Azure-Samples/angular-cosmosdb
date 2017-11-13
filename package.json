@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "dev-proxy": "concurrently \"NODE_ENV=development npm run debug\" \"ng serve --proxy-config proxy.conf.json --open\"",
     "ng": "ng",
     "start-ng": "ng serve",
     "build": "ng build",
@@ -16,9 +17,8 @@
     "docker-up": "docker-compose up -d --build",
     "docker-up-debug": "docker-compose -f docker-compose.debug.yml up -d --build",
     "docker-down": "docker-compose down",
-    "start-fresh": "ng b --prod && npm start",
-    "start": "PUBLICWEB=./dist/publicweb SERVER_PORT=3002 node src/server/index.js",
-    "debug": "PUBLICWEB=./dist/publicweb SERVER_PORT=3002 node --inspect-brk src/server/index.js"
+    "start": "NODE_ENV=development PUBLICWEB=./dist/publicweb node src/server/index.js",
+    "debug": "NODE_ENV=development PUBLICWEB=./dist/publicweb node --inspect src/server/index.js"
   },
   "private": true,
   "dependencies": {
@@ -52,6 +52,7 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
     "codelyzer": "~3.1.1",
+    "concurrently": "^3.5.0",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
     "karma": "~1.7.0",
