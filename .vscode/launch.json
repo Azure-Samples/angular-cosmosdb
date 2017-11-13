@@ -3,8 +3,14 @@
   "configurations": [
     {
       "type": "node",
+      "request": "attach",
+      "name": "Attach to Node",
+      "port": 9229
+    },
+    {
+      "type": "node",
       "request": "launch",
-      "name": "Launch via NPM",
+      "name": "Debug my angular app",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run-script", "debug"],
       "port": 9229
