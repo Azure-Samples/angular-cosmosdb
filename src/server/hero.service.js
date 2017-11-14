@@ -32,24 +32,23 @@ function postHero(req, res) {
 }
 
 function putHero(req, res) {
-  const originalHero = {
+  const updatedHero = {
     id: parseInt(req.params.id, 10),
     name: req.body.name,
     saying: req.body.saying,
     updatedBy: req.user.username
   };
-  Hero.findOne({ id: originalHero.id }, (error, hero) => {
-    if (checkServerError(res, error)) return;
-    if (!checkFound(res, hero)) return;
 
-    hero.name = originalHero.name;
-    hero.saying = originalHero.saying;
-    hero.save(error => {
+  Hero.findOneAndUpdate(
+    { id: updatedHero.id },
+    { $set: updatedHero },
+    { upsert: true, new: true },
+    (error, doc) => {
       if (checkServerError(res, error)) return;
-      res.status(200).json(hero);
+      res.status(200).json(doc);
       console.log('Hero updated successfully!');
-    });
-  });
+    }
+  );
 }
 
 function deleteHero(req, res) {
