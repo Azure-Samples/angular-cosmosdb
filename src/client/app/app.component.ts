@@ -11,5 +11,5 @@ import { Component } from '@angular/core';
   `
 })
 export class AppComponent {
-  title = 'Angular CosmosDB on Azure';
+  title = 'Hi live 360';
 }
