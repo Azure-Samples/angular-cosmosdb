@@ -7,13 +7,8 @@ function getHeroes(req, res) {
   const docquery = Hero.find({}).read(ReadPreference.NEAREST);
   docquery
     .exec()
-    .then(heroes => {
-      res.status(200).json(heroes);
-    })
-    .catch(error => {
-      res.status(500).send(error);
-      return;
-    });
+    .then(heroes => res.status(200).json(heroes))
+    .catch(error => res.status(500).send(error));
 }
 
 function postHero(req, res) {
