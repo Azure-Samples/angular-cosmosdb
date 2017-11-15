@@ -11,5 +11,5 @@ import { Component } from '@angular/core';
   `
 })
 export class AppComponent {
-  title = 'Hi live 360 test';
+  title = 'Hi VS Live 360';
 }
