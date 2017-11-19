@@ -8,11 +8,11 @@ mongoose.Promise = global.Promise;
 const env = require('./env/environment');
 
 // eslint-disable-next-line max-len
-const mongoUri = `mongodb://${env.dbName}:${env.key}@${env.dbName}.documents.azure.com:${env.cosmosPort}/?ssl=true`; //&replicaSet=globaldb`;
+const mongoUri = `mongodb://${env.accountName}:${env.key}@${env.accountName}.documents.azure.com:${env.port}/${env.databaseName}?ssl=true`; //&replicaSet=globaldb`;
 
 function connect() {
- mongoose.set('debug', true);
- return mongoose.connect(mongoUri, { useMongoClient: true });
+  mongoose.set('debug', true);
+  return mongoose.connect(mongoUri, { useMongoClient: true });
 }
 
 module.exports = {
