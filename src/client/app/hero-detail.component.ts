@@ -50,8 +50,6 @@ export class HeroDetailComponent implements AfterViewInit, OnInit {
     }
   }
 
-  constructor() {}
-
   ngOnInit() {
     this.addingHero = !this.hero;
     this.editingHero = this.cloneIt();
