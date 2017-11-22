@@ -5,7 +5,34 @@ import { HeroService } from './hero.service';
 
 @Component({
   selector: 'app-hero-list',
-  templateUrl: './hero-list.component.html',
+  template: `
+    <div>
+      <div class="button-group">
+        <button (click)="getHeroes()">Refresh</button>
+        <button (click)="enableAddMode()" *ngIf="!addingHero && !selectedHero">Add</button>
+      </div>
+      <ul class="heroes" *ngIf="heroes && heroes.length">
+        <li *ngFor="let hero of heroes"
+          class="hero-container"
+          [class.selected]="hero === selectedHero">
+          <div class="hero-element">
+            <div class="badge">{{hero.id}}</div>
+            <div class="hero-text" (click)="onSelect(hero)">
+              <div class="name">{{hero.name}}</div>
+              <div class="saying">{{hero.saying}}</div>
+            </div>
+          </div>
+          <button class="delete-button" (click)="deleteHero(hero)">Delete</button>
+        </li>
+      </ul>
+      <app-hero-detail
+        *ngIf="selectedHero || addingHero"
+        [hero]="selectedHero"
+        (unselect)="unselect()"
+        (heroChanged)="save($event)">
+      </app-hero-detail>
+    </div>
+  `,
   styleUrls: [`./hero-list.component.scss`]
 })
 export class HeroesComponent implements OnInit {
