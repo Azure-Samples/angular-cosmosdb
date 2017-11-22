@@ -1,12 +1,5 @@
 import {
-  AfterViewInit,
-  Component,
-  Input,
-  ElementRef,
-  EventEmitter,
-  OnInit,
-  Output,
-  ViewChild
+  AfterViewInit, Component, Input, ElementRef, EventEmitter, OnInit, Output, ViewChild
 } from '@angular/core';
 
 import { Hero } from './hero';
