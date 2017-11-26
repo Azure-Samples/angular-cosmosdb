@@ -69,7 +69,7 @@ export class HeroDetailComponent implements AfterViewInit, OnInit {
     return Object.assign({}, this.hero);
   }
 
-  emitRefresh(mode) {
+  emitRefresh(mode: string) {
     this.heroChanged.emit({ mode: mode, hero: this.editingHero });
     this.clear();
   }

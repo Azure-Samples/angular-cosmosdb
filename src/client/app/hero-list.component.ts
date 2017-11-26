@@ -37,8 +37,8 @@ import { HeroService } from './hero.service';
 })
 export class HeroesComponent implements OnInit {
   addingHero = false;
-  heroes: any = [];
-  selectedHero: Hero;
+  heroes: Hero[] = [];
+  selectedHero: Hero = null;
 
   constructor(private heroService: HeroService) {}
 
@@ -53,7 +53,7 @@ export class HeroesComponent implements OnInit {
 
   deleteHero(hero: Hero) {
     this.heroService.deleteHero(hero).subscribe(res => {
-      this.heroes = this.heroes.filter(h => h !== hero);
+      this.heroes = this.heroes.filter((h: Hero) => h !== hero);
       if (this.selectedHero === hero) {
         this.selectedHero = null;
       }
@@ -78,7 +78,7 @@ export class HeroesComponent implements OnInit {
     this.selectedHero = hero;
   }
 
-  save(arg) {
+  save(arg: { mode: string; hero: Hero }) {
     const hero = arg.hero;
     console.log('hero changed', hero);
     if (arg.mode === 'add') {
@@ -89,7 +89,7 @@ export class HeroesComponent implements OnInit {
       });
     } else {
       this.heroService.updateHero(hero).subscribe(() => {
-        const index = this.heroes.findIndex(h => hero.id === h.id);
+        const index = this.heroes.findIndex((h: Hero) => hero.id === h.id);
         this.heroes.splice(index, 1, hero);
         this.clear();
       });
