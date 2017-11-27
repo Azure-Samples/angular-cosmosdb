@@ -1,12 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Hero } from './hero';
-import { Observable } from 'rxjs/Observable';
-
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-// import 'rxjs/Rx';
 
 const api = '/api';
 
@@ -14,24 +9,8 @@ const api = '/api';
 export class HeroService {
   constructor(private http: HttpClient) {}
 
-  logout() {
-    return this.http.get(`${api}/logout`);
-  }
-
-  getProfile() {
-    return this.http.get<any>(`${api}/profile`);
-  }
-
   getHeroes() {
-    return this.http
-      .get<Array<Hero>>(`${api}/heroes`)
-      .map(heroes => heroes)
-      .catch(this.handleError);
-  }
-
-  private handleError(res: HttpErrorResponse) {
-    console.error(res.error);
-    return Observable.throw(res.error || 'Server error');
+    return this.http.get<Array<Hero>>(`${api}/heroes`);
   }
 
   deleteHero(hero: Hero) {
