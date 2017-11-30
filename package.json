@@ -31,18 +31,18 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "body-parser": "^1.18.2",
     "core-js": "^2.4.1",
-    "rxjs": "^5.4.2",
-    "zone.js": "^0.8.14",
-    "body-parser": "~1.17.2",
     "csurf": "~1.9.0",
-    "express": "~4.15.3",
+    "express": "^4.16.0",
     "express-session": "~1.15.5",
     "helmet": "~3.8.1",
     "lusca": "~1.5.1",
     "mongoose": "~4.11.1",
     "passport": "~0.4.0",
-    "passport-twitter": "~1.0.4"
+    "passport-twitter": "~1.0.4",
+    "rxjs": "^5.4.2",
+    "zone.js": "^0.8.14"
   },
   "devDependencies": {
     "@angular/cli": "1.4.3",
