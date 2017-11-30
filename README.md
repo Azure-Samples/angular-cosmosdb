@@ -41,18 +41,16 @@ You can [view all videos together here](/VIDEOS.md)
 
 1. Configure Cosmos DB server settings
 
-    Rename the `example-environment.js` file to `environment.js` in the `server/env/` folder and update it with your Cosmos DB settings. Replace the database name key, and port with your specific configuration.
+    Rename the `example-environment.js` file to `environment.js` in the `server/env/` folder and update it with your Cosmos DB settings. Replace the account, database name, key, and port with your specific configuration.
 
     ```javascript
     // server/env/environment.js
-    const cosmosPort = 1234; // replace with your port
-    const dbName = 'your-cosmos-db-name-goes-here';
-    const key = 'your-key-goes-here';
 
     module.exports = {
-      cosmosPort,
-      dbName,
-      key
+      accountName: 'your-cosmosdb-account-name-goes-here',
+      databaseName: 'your-cosmosdb-database-name-goes-here',
+      key: 'your-key-goes-here',
+      port: 10255
     };
     ```
 
