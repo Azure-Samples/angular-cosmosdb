@@ -1,16 +1,15 @@
 const passport = require('passport');
 const TwitterStrategy = require('passport-twitter').Strategy;
-const env = require('../env/' + (process.env.NODE_ENV || 'development'));
 
 // TODO: This disables security if we have no key.
 //       NOT A GOOD IDEA FOR PRODUCTION!
-if (env.twitter.consumerKey) {
+if (process.env.TWITTER_CLIENT_SECRET) {
   passport.use(
     new TwitterStrategy(
       {
-        consumerKey: env.twitter.consumerKey,
-        consumerSecret: env.twitter.consumerSecret,
-        callbackURL: env.twitter.callbackURL
+        consumerKey: process.env.TWITTER_CLIENT_KEY,
+        consumerSecret: process.env.TWITTER_CLIENT_SECRET,
+        callbackURL: process.env.TWITTER_CALLBACK_URL
       },
       (token, tokenSecret, profile, done) => {
         // find the user in this app's database using their twitter account
