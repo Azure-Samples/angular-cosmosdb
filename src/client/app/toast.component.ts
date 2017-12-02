@@ -28,7 +28,7 @@ export class ToastComponent implements OnDestroy, OnInit {
   constructor(private toastService: ToastService) {
     this.toastSubscription = this.toastService.toastState
       .takeUntil(this.onDestroy)
-      .subscribe((toastMessage) => {
+      .subscribe(toastMessage => {
         console.log(`activiting toast: ${toastMessage.message}`);
         this.activate(toastMessage.message);
       });
@@ -58,6 +58,6 @@ export class ToastComponent implements OnDestroy, OnInit {
 
   private hide() {
     this.toastElement.style.opacity = 0;
-    window.setTimeout(() => this.toastElement.style.zIndex = 0, 400);
+    window.setTimeout(() => (this.toastElement.style.zIndex = 0), 400);
   }
 }

@@ -13,7 +13,13 @@ import { ToastService } from './toast.service';
 import { HeroDetailComponent } from './hero-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, HeroesComponent, LoginComponent, ToastComponent, HeroDetailComponent],
+  declarations: [
+    AppComponent,
+    HeroesComponent,
+    LoginComponent,
+    ToastComponent,
+    HeroDetailComponent
+  ],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [
     HeroService,
