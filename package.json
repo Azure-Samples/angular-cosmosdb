@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev-proxy": "concurrently \"NODE_ENV=development npm run debug\" \"ng serve --proxy-config proxy.conf.json --open\"",
+    "dev-proxy":
+      "concurrently \"npm run debug\" \"ng serve --proxy-config proxy.conf.json --open\"",
     "ng": "ng",
     "start-ng": "ng serve",
     "build": "ng build",
@@ -17,8 +18,8 @@
     "docker-up": "docker-compose up -d --build",
     "docker-up-debug": "docker-compose -f docker-compose.debug.yml up -d --build",
     "docker-down": "docker-compose down",
-    "start": "NODE_ENV=development PUBLICWEB=./dist/publicweb node src/server/index.js",
-    "debug": "NODE_ENV=development PUBLICWEB=./dist/publicweb node --inspect src/server/index.js"
+    "start": "PUBLICWEB=./dist/publicweb node -r dotenv/config src/server/index.js",
+    "debug": "PUBLICWEB=./dist/publicweb node -r dotenv/config --inspect src/server/index.js"
   },
   "private": true,
   "dependencies": {
@@ -34,6 +35,7 @@
     "body-parser": "^1.18.2",
     "core-js": "^2.4.1",
     "csurf": "~1.9.0",
+    "dotenv": "^4.0.0",
     "express": "^4.16.0",
     "express-session": "~1.15.5",
     "helmet": "~3.8.1",
