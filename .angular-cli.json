@@ -13,12 +13,14 @@
         {
           "glob": "**/*.*",
           "input": "../server/",
-          "output": "../"
+          "output": "../",
+          "allowOutsideOutDir": true
         },
         {
           "glob": "package.json",
           "input": "../../",
-          "output": "../"
+          "output": "../",
+          "allowOutsideOutDir": true
         }
       ],
       "index": "index.html",
