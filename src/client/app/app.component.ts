@@ -11,5 +11,5 @@ import { Component } from '@angular/core';
   `
 })
 export class AppComponent {
-  title = 'ngAtlanta Heroes Rule';
+  title = 'Angular Heroes';
 }
