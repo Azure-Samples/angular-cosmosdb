@@ -1,9 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ToastService } from './toast.service';
+import { Subject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
-import { Subscription } from 'rxjs/Subscription';
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/takeUntil';
+import { ToastService } from './toast.service';
 
 @Component({
   selector: 'app-toast',
@@ -27,7 +26,7 @@ export class ToastComponent implements OnDestroy, OnInit {
 
   constructor(private toastService: ToastService) {
     this.toastSubscription = this.toastService.toastState
-      .takeUntil(this.onDestroy)
+      .pipe(takeUntil(this.onDestroy))
       .subscribe(toastMessage => {
         console.log(`activiting toast: ${toastMessage.message}`);
         this.activate(toastMessage.message);

@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { throwError as observableThrowError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+
 import { Hero } from './hero';
-import { Observable } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
 
 const api = '/api';
 
@@ -21,15 +22,12 @@ export class HeroService {
   getHeroes() {
     return this.http
       .get<Array<Hero>>(`${api}/heroes`)
-      .pipe(
-        map(heroes => heroes),
-        catchError(this.handleError)
-      );
+      .pipe(map(heroes => heroes), catchError(this.handleError));
   }
 
   private handleError(res: HttpErrorResponse) {
     console.error(res.error);
-    return Observable.throw(res.error || 'Server error');
+    return observableThrowError(res.error || 'Server error');
   }
 
   deleteHero(hero: Hero) {

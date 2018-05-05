@@ -1,8 +1,6 @@
 import { Injectable, Optional, SkipSelf } from '@angular/core';
 
-import { Subject } from 'rxjs/Subject';
-
-// import 'rxjs/Rx'; // TODO: These aren't the imports you are looking for
+import { Subject } from 'rxjs';
 
 export interface ToastMessage {
   message: string;

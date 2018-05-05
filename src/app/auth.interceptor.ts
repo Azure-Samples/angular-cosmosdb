@@ -1,32 +1,31 @@
 import {
-  HttpInterceptor,
-  HttpHandler,
-  HttpRequest,
+  HttpErrorResponse,
   HttpEvent,
-  HttpResponse,
-  HttpErrorResponse
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+  HttpResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/observable/throw';
-
+import { Observable, throwError as observableThrowError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { ToastService } from './toast.service';
 
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private toastService: ToastService) {}
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     const started = Date.now();
-    return next
-      .handle(req)
-      .do(event => {
+    return next.handle(req).pipe(
+      tap(event => {
         if (event instanceof HttpResponse) {
           const elapsed = Date.now() - started;
           console.log(`Request for ${req.urlWithParams} took ${elapsed} ms.`);
         }
-      })
-      .catch(response => {
+      }),
+      catchError(response => {
         if (response instanceof HttpErrorResponse) {
           console.log('Processing http error', response);
           if (response.status === 401) {
@@ -45,7 +44,8 @@ export class AuthInterceptor implements HttpInterceptor {
           }
         }
 
-        return Observable.throw(response);
-      });
+        return observableThrowError(response);
+      })
+    );
   }
 }
