@@ -3,23 +3,22 @@
   "version": "0.2.0",
   "license": "MIT",
   "scripts": {
-    "dev-proxy":
-      "concurrently \"npm run debug\" \"ng serve --proxy-config proxy.conf.json --open\"",
+    "dev-proxy": "concurrently \"npm run debug\" \"ng serve --proxy-config proxy.conf.json --open\"",
     "ng": "ng",
     "start-ng": "ng serve",
     "build": "ng build",
-    "build-prod": "ng build --prod --build-optimizer",
+    "build-prod": "ng build --prod",
     "sme": "./node_modules/.bin/source-map-explorer",
     "gen-stats": "ng build --prod --stats-json",
-    "view-stats": "webpack-bundle-analyzer dist/publicweb/stats.json",
+    "view-stats": "webpack-bundle-analyzer dist/stats.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "docker-up": "docker-compose up -d --build",
     "docker-up-debug": "docker-compose -f docker-compose.debug.yml up -d --build",
     "docker-down": "docker-compose down",
-    "start": "PUBLICWEB=./dist/publicweb node -r dotenv/config src/server/index.js",
-    "debug": "PUBLICWEB=./dist/publicweb node -r dotenv/config --inspect src/server/index.js"
+    "local": "WWW=./dist node -r dotenv/config server.js",
+    "debug": "WWW=./dist node -r dotenv/config --inspect server.js"
   },
   "private": true,
   "dependencies": {
@@ -47,7 +46,7 @@
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
-    "@angular/cli": "1.6.7",
+    "@angular/cli": "^6.0.0",
     "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
     "@types/jasmine": "~2.8.3",
@@ -67,6 +66,7 @@
     "tslint": "~5.9.1",
     "typescript": "~2.5.3",
     "webpack-bundle-analyzer": "^2.9.2",
-    "webpack-visualizer-plugin": "^0.1.11"
+    "webpack-visualizer-plugin": "^0.1.11",
+    "@angular-devkit/build-angular": "~0.6.0"
   }
 }

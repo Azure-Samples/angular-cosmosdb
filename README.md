@@ -62,7 +62,7 @@ You can [view all videos together here](/VIDEOS.md)
 
     SERVER_PORT=3001
     SESSION_SECRET=your_awesome_secret
-    PUBLICWEB=./publicweb
+    WWW=./
 
     COSMOSDB_ACCOUNT=your_cosmos_account
     COSMOSDB_DB=your_cosmos_db
