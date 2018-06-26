@@ -17,7 +17,7 @@ function getHeroes(req, res) {
 }
 
 function postHero(req, res) {
-  const originalHero = { id: req.body.id, name: req.body.name, saying: req.body.saying };
+  const originalHero = { uid: req.body.uid, name: req.body.name, saying: req.body.saying };
   const hero = new Hero(originalHero);
   hero.save(error => {
     if (checkServerError(res, error)) return;
@@ -28,11 +28,11 @@ function postHero(req, res) {
 
 function putHero(req, res) {
   const originalHero = {
-    id: parseInt(req.params.id, 10),
+    uid: parseInt(req.params.uid, 10),
     name: req.body.name,
     saying: req.body.saying
   };
-  Hero.findOne({ id: originalHero.id }, (error, hero) => {
+  Hero.findOne({ uid: originalHero.uid }, (error, hero) => {
     if (checkServerError(res, error)) return;
     if (!checkFound(res, hero)) return;
 
@@ -47,8 +47,8 @@ function putHero(req, res) {
 }
 
 function deleteHero(req, res) {
-  const id = parseInt(req.params.id, 10);
-  Hero.findOneAndRemove({ id: id })
+  const uid = parseInt(req.params.uid, 10);
+  Hero.findOneAndRemove({ uid: uid })
     .then(hero => {
       if (!checkFound(res, hero)) return;
       res.status(200).json(hero);

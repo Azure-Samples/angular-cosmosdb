@@ -3,7 +3,7 @@
     <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
       <button class="delete-button" (click)="deleteHero(hero)">Delete</button>
       <div class="hero-element">
-        <div class="badge">{{hero.id}}</div>
+        <div class="badge">{{hero.uid}}</div>
         <div class="name">{{hero.name}}</div>
         <div class="saying">{{hero.saying}}</div>
       </div>
@@ -15,8 +15,8 @@
       <div class="editfields">
         <div>
           <label>id: </label>
-          <input [(ngModel)]="selectedHero.id" placeholder="id" *ngIf="addingHero" />
-          <label *ngIf="!addingHero" class="value">{{selectedHero.id}}</label>
+          <input [(ngModel)]="selectedHero.uid" placeholder="id" *ngIf="addingHero" />
+          <label *ngIf="!addingHero" class="value">{{selectedHero.uid}}</label>
         </div>
         <div>
           <label>name: </label>
