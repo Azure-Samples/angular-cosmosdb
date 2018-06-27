@@ -22,7 +22,10 @@ You can [view all videos together here](/VIDEOS.md)
     npm install -g @angular/cli
     ```
 
-1. Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+2. Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+
+3. Set up a Cosmos DB server with a MongoDB database. Make sure you note the name of the Azure Cosmos DB account, the name of the database, the primary password and the port. You can find all this information in the [Azure portal](https://portal.azure.com).
+
 
 ## Getting Started
 
@@ -33,13 +36,13 @@ You can [view all videos together here](/VIDEOS.md)
     cd angular-cosmosdb
     ```
 
-1. Install the npm packages
+2. Install the npm packages
 
     ```bash
     npm i
     ```
 
-1. Configure Cosmos DB server settings
+3. Configure Cosmos DB server settings
 
     Rename the `example-environment.js` file to `environment.js` in the `server/env/` folder and update it with your Cosmos DB settings. Replace the account, database name, key, and port with your specific configuration.
 
@@ -62,13 +65,13 @@ You can [view all videos together here](/VIDEOS.md)
     ng build
     ```
 
-1. Launch the server
+2. Launch the server
 
     ```bash
     node src/server/index.js
     ```
 
-1. Open the browser to http://localhost:3000
+3. Open the browser to http://localhost:3000
 
 ## Problems or Suggestions
 
