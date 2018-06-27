@@ -10,11 +10,11 @@ export class HeroService {
   constructor(private http: HttpClient) {}
 
   getHeroes() {
-    return this.http.get<Array<Hero>>(`${api}/heroes`)
+    return this.http.get<Array<Hero>>(`${api}/heroes`);
   }
 
   deleteHero(hero: Hero) {
-    return this.http.delete(`${api}/hero/${hero.id}`);
+    return this.http.delete(`${api}/hero/${hero.uid}`);
   }
 
   addHero(hero: Hero) {
@@ -22,6 +22,6 @@ export class HeroService {
   }
 
   updateHero(hero: Hero) {
-    return this.http.put<Hero>(`${api}/hero/${hero.id}`, hero);
+    return this.http.put<Hero>(`${api}/hero/${hero.uid}`, hero);
   }
 }
