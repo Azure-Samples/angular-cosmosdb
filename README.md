@@ -16,6 +16,8 @@ You can [view all videos together here](/VIDEOS.md)
 
 ## Requirements
 
+Please note that we are currently locking this to use the Angular CLI version 1.X.X since this project is using Angular 4.X.X
+
 1. Install the Angular CLI
 
    ```bash
