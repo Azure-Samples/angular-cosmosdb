@@ -1,7 +1,13 @@
 ---
-services: cosmos-db
-platforms: nodejs
-author: jopapa
+page_type: sample
+languages:
+- typescript
+- javascript
+- html
+products:
+- azure
+description: "You can watch me build the app as part of my series here"
+urlFragment: angular-cosmosdb
 ---
 
 # Angular Cosmos DB
