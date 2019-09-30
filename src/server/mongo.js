@@ -17,7 +17,7 @@ function connect() {
   return mongoose.connect(
     mongoUri,
     {
-      useMongoClient: true
+      useNewUrlParser: true
     }
   );
 }
