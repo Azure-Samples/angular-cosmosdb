@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { Hero } from './hero';
 
-const api = '/api';
+const base = 'http://localhost:3000';
+const api = base + '/api';
 
 @Injectable()
 export class HeroService {
